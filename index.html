@@ -14,22 +14,26 @@
 
     <h2>概要</h2>
     <img src="https://raw.githubusercontent.com/Masan-k/importTest/main/about_image.png" alt='about Image'>
-    <p>htmlファイルからJavaScriptをモジュールとして読み込み読み込んだモジュール内の関数を呼び出す。</p>
+    <p>htmlファイルから別ファイルのJavaScriptファイルをモジュールとして読み込みモジュールの関数を呼び出す</p>
 
     <script type="module">
        import {printHello} from 'https://masan-k.github.io/importTest/printHello.js';
        printHello();
     </script>
+    <script type="module">
+       import * from './printWorld.js';
+       writeConsoleLog();
+    </script>
 
     <h2>メモ</h2>
     <p>localhostで動かしたがエラーで動かなかったのでGitHubのGit Pageを利用</p>
-    <p>html上で"script text/javascript XXX..." で書いていたが、エラーのためmoduleに変更（参考サイト②)</p>
+    <p>html上で"script text/javascript XXX..." で書いていたがエラーのためmoduleに変更（参考サイト②)</p>
 
     <h2>コード置き場</h2> 
     <a href="https://github.com/Masan-k/importTest">Git Hub</a>
 
     <h2>参考サイト</h2>
-    <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import">①[mdn web docs] import_</a>
+    <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import">①[mdn web docs] import_</a><br>
     <a href="https://qiita.com/naokikobashi/items/af5eed4504f46d850f19">②[Qiita]【Webpack】jsファイルのimportがうまくいかない時のエラー2連続と対処</a>
   </body>
 </html>
