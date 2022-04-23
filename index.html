@@ -8,14 +8,6 @@
       hgroup, menu, nav, section { display: block; }
     </style>
 
-</head>
-  <body>
-    <h1>JavaScriptでモジュールを扱う</h1>
-
-    <h2>概要</h2>
-    <img src="https://raw.githubusercontent.com/Masan-k/importTest/main/about_image.png" alt='about Image'>
-    <p>htmlファイルから別ファイルのJavaScriptファイルをモジュールとして読み込みモジュールの関数を呼び出す</p>
-
     <script type="module">
        import {printHello} from 'https://masan-k.github.io/importTest/printHello.js';
        printHello();
@@ -25,15 +17,52 @@
        pw.writeConsoleLog();
     </script>
 
-    <h2>メモ</h2>
-    <p>localhostで動かしたがエラーで動かなかったのでGitHubのGit Pageを利用</p>
-    <p>html上で"script text/javascript XXX..." で書いていたがエラーのためmoduleに変更（参考サイト②)</p>
+</head>
+  <body>
+    <h1>JavaScriptでモジュールを扱う</h1>
+    <h2>概要</h2>
+    <p>htmlファイルから別ファイルのJavaScriptファイルをモジュールとして読み込む</p>
+    <figure>
+      <figcaption>[イメージ図]</figcaption>
+      <img src="https://raw.githubusercontent.com/Masan-k/importTest/main/about_image.png" alt='about Image'>
+    </figure>
 
-    <h2>コード置き場</h2> 
-    <a href="https://github.com/Masan-k/importTest">Git Hub</a>
+    <h2>コード1:絶対パス＆関数名指定</h2>
+    <fieldset>
+      <legend>index.html</legend>
+      <pre><p><code>
+&lt;script type="module"&gt;
+  import {printHello} from 'https://masan-k.github.io/importTest/printHello.js';
+  printHello();
+&lt;/script&gt;
+      </code></p></pre>
+    </fieldset>
+    <h2>コード2:相対パス＆関数名指定なし＆別名設定</h2>
+    <fieldset>
+      <legend>index.html</legend>
+      <pre><p><code>
+&lt;script type="module"&gt;
+  import * as pw from './printWorld.js';
+  pw.writeConsoleLog();
+&lt;/script&gt;
+      </code></p></pre>
+    </fieldset>
+    <h2>補足</h2>
+    <ul>
+      <li>実行結果はこのページのコンソールログ参照のこと</li>
+      <li>index.htmlから呼び出したファイルは<a href="https://github.com/Masan-k/importTest">ソース置き場[Git Hub]</a>を参照のこと</li>
+    </ul>
+    
+    <h2>トラブルメモ</h2>
+    <ul>
+      <li><s>localhostで動かしたがエラーで動かなかったのでGitHubのGit Pageを利用</s><br>localhostでも問題なく動いた。単にパスの指定方法が間違っていた</li>
+      <li>"type="text/javascript"はエラー、正しくは"type="module"だった</li>
+    </ul>
 
     <h2>参考サイト</h2>
-    <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import">①[mdn web docs] import_</a><br>
-    <a href="https://qiita.com/naokikobashi/items/af5eed4504f46d850f19">②[Qiita]【Webpack】jsファイルのimportがうまくいかない時のエラー2連続と対処</a>
+    <ul>
+      <li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import">[mdn web docs] import_</a><br></li>
+      <li><a href="https://qiita.com/naokikobashi/items/af5eed4504f46d850f19">[Qiita]【Webpack】jsファイルのimportがうまくいかない時のエラー2連続と対処</a></li>
+    </ul>
   </body>
 </html>
